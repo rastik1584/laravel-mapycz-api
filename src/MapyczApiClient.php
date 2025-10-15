@@ -1,11 +1,11 @@
 <?php
+declare(strict_types=1);
 
 namespace Rastik1584\LaravelMapyczApi;
 
 use Illuminate\Http\Client\RequestException;
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Storage;
 
 class MapyczApiClient
 {
@@ -20,17 +20,9 @@ class MapyczApiClient
 
         $request = Http::baseUrl(config('mapycz-api.base_url'));
 
-        // Disable SSL verification if configured
         if (!config('mapycz-api.verify_ssl', true)) {
             $request = $request->withoutVerifying();
         }
-        // Todo: remove after publishing
-//        $baseUrl = config('mapycz-api.base_url');
-//        $queryParams = ['apikey' => config('mapycz-api.api_key')] + $params;
-//
-//// Vygenerovaná URL:
-//        $fullUrl = $baseUrl . $endpoint . '?' . http_build_query($queryParams);
-//        dd($fullUrl, $params);
 
         return $request
             ->withQueryParameters(['apikey' => config('mapycz-api.api_key')] + $params)

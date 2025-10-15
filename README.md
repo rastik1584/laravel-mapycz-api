@@ -1,6 +1,8 @@
 # !!! Work in progress !!!
 # Laravel Mapy.cz API
 
+### Support Laravel version 10 and higher
+
 ## About this package
 
 This package provides Laravel integration with the Mapy.cz REST API.

@@ -30,4 +30,18 @@ return [
 
     // SSL verification (disable for local development if having certificate issues)
     'verify_ssl' => env('MAPYCZ_API_VERIFY_SSL', true),
+
+    'aliases' => [
+        'MapyczApi' => \Rastik1584\LaravelMapyczApi\Facades\MapyczApi::class,
+    ],
+
+    // Defaults and allowed params
+    'allowed_params' => [
+        'routeType' => ['car_fast', 'car_fast_traffic', 'car_short', 'foot_fast', 'bike_road', 'bike_mountain'],
+        'lang' => ['cs', 'de', 'el', 'en', 'es', 'fr', 'it', 'nl', 'pl', 'pt', 'ru', 'sk', 'tr', 'uk'],
+        'mapSets' => ['basic', 'outdoor', 'aerial', 'winter', 'aerial-names-overlay'],
+        'imageFormats' => ['png', 'jpg', 'webp', 'gif'],
+        'routingFormats' => ['geojson', 'polyline', 'polyline6'],
+
+    ]
 ];

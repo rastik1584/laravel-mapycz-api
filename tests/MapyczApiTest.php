@@ -13,19 +13,19 @@ use Rastik1584\LaravelMapyczApi\MapyczApiServiceProvider;
 
 class MapyczApiTest extends TestCase
 {
-    protected function getPackageProviders($app)
+    protected function getPackageProviders($app): array
     {
         return [MapyczApiServiceProvider::class];
     }
 
-    protected function getPackageAliases($app)
+    protected function getPackageAliases($app): array
     {
         return [
             'MapyczApi' => MapyczApi::class,
         ];
     }
 
-    protected function getEnvironmentSetUp($app)
+    protected function getEnvironmentSetUp($app): void
     {
         // Setup default database to use sqlite :memory:
         $app['config']->set('mapycz-api.api_key', 'test-api-key');

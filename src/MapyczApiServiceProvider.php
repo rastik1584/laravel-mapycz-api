@@ -20,7 +20,9 @@ class MapyczApiServiceProvider extends ServiceProvider
 
         // Register the main class to use with the facade
         $this->app->singleton('mapycz-api', function ($app) {
-            return new MapyczApi(config('mapycz-api'));
+            return new \Rastik1584\LaravelMapyczApi\MapyczApi(
+                $app->make(\Rastik1584\LaravelMapyczApi\MapyczApiClient::class)
+            );
         });
     }
 
@@ -31,9 +33,13 @@ class MapyczApiServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // Publish config
         $this->publishes([
             __DIR__.'/../config/mapycz-api.php' => config_path('mapycz-api.php'),
         ], 'config');
+
+        // Register helper
+        if (file_exists(__DIR__.'/helpers.php')) {
+            require_once __DIR__.'/helpers.php';
+        }
     }
 }
