@@ -2,6 +2,7 @@
 /node_modules/
 /.phpunit.result.cache
 /.phpunit.cache/
+/.phpstan/
 /.idea/
 /.vscode/
 /.DS_Store

@@ -1,5 +1,7 @@
 <?php
 
+use Rastik1584\LaravelMapyczApi\Facades\MapyczApi;
+
 return [
     /*
     |--------------------------------------------------------------------------
@@ -11,7 +13,7 @@ return [
     */
 
     // API Key (if required by Mapy.cz)
-    'api_key' => env('MAPYCZ_API_KEY', env('MAPYCZ_API_KEY', '')),
+    'api_key' => env('MAPYCZ_API_KEY', ''),
 
     // Base URL for the Mapy.cz API
     'base_url' => env('MAPYCZ_API_BASE_URL', 'https://api.mapy.cz/v1/'),
@@ -32,16 +34,17 @@ return [
     'verify_ssl' => env('MAPYCZ_API_VERIFY_SSL', true),
 
     'aliases' => [
-        'MapyczApi' => \Rastik1584\LaravelMapyczApi\Facades\MapyczApi::class,
+        'MapyczApi' => MapyczApi::class,
     ],
 
     // Defaults and allowed params
     'allowed_params' => [
-        'routeType' => ['car_fast', 'car_fast_traffic', 'car_short', 'foot_fast', 'bike_road', 'bike_mountain'],
+        'routeTypes' => ['car_fast', 'car_fast_traffic', 'car_short', 'foot_fast', 'foot_hiking', 'bike_road', 'bike_mountain'],
         'lang' => ['cs', 'de', 'el', 'en', 'es', 'fr', 'it', 'nl', 'pl', 'pt', 'ru', 'sk', 'tr', 'uk'],
+        'geocodeEntityTypes' => ['regional', 'regional.country', 'regional.region', 'regional.municipality', 'regional.municipality_part', 'regional.street', 'regional.address', 'poi', 'coordinate'],
         'mapSets' => ['basic', 'outdoor', 'aerial', 'winter', 'aerial-names-overlay'],
         'imageFormats' => ['png', 'jpg', 'webp', 'gif'],
         'routingFormats' => ['geojson', 'polyline', 'polyline6'],
-
-    ]
+        'tileSizes' => ['256', '256@2x'],
+    ],
 ];

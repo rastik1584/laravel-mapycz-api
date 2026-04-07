@@ -1,12 +1,8 @@
 <?php
 
-
-if (!function_exists('normalizeCoordinates')) {
+if (! function_exists('normalizeCoordinates')) {
     /**
      * Normalize coordinate input and return as ['lon' => ..., 'lat' => ...]
-     *
-     * @param array $coords
-     * @return array
      */
     function normalizeCoordinates(array $coords): array
     {
@@ -31,19 +27,16 @@ if (!function_exists('normalizeCoordinates')) {
             return ['lon' => $first, 'lat' => $second];
         }
 
-        throw new \InvalidArgumentException("Invalid coordinate input: " . json_encode($coords));
+        throw new InvalidArgumentException('Invalid coordinate input: '.json_encode($coords));
     }
 }
 
-if (!function_exists('normalizeCoordinatesBatch')) {
+if (! function_exists('normalizeCoordinatesBatch')) {
     /**
      * Normalize array of coordinates
-     *
-     * @param array $points
-     * @return array
      */
     function normalizeCoordinatesBatch(array $points): array
     {
-        return array_map(fn($point) => normalizeCoordinates($point), $points);
+        return array_map(fn ($point) => normalizeCoordinates($point), $points);
     }
 }
