@@ -75,8 +75,13 @@ jobs:
       - name: Validate composer.json
         run: composer validate --no-check-publish --no-check-lock
 
+      - name: Set dependency constraints
+        run: |
+          composer require "illuminate/support:${{ matrix.illuminate }}" --no-update --no-interaction
+          composer require --dev "laravel/framework:${{ matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}" --no-update --no-interaction
+
       - name: Install dependencies
-        run: composer update "laravel/framework:${{ matrix.laravel }}" "illuminate/support:${{ matrix.illuminate }}" "orchestra/testbench:${{ matrix.testbench }}" --with-all-dependencies --prefer-dist --no-interaction
+        run: composer update --with-all-dependencies --prefer-dist --no-interaction
 
       - name: Run tests
         run: composer test
